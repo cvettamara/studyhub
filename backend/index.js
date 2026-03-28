@@ -12,5 +12,8 @@ app.use(express.json());
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+const forumRoutes = require('./routes/forum');
+app.use('/api/forum', forumRoutes);
+
 // server start
 app.listen(5000, () => console.log('Server running on port 5000'));
