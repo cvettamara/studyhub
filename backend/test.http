@@ -1,3 +1,5 @@
+
+### Register
 POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
@@ -8,7 +10,7 @@ Content-Type: application/json
   "password": "123456"
 }
 
-###
+### Login
 
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
@@ -17,3 +19,68 @@ Content-Type: application/json
   "email": "tamara2@test.com",
   "password": "123456"
 }
+
+### Create Post
+POST http://localhost:5000/api/forum/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+{
+  "title": "Kako da ucam matematika?",
+  "content": "Imam ispit za nedelа, nekoi soveti?",
+  "subject": "Matematika"
+}
+
+### Get Posts
+GET http://localhost:5000/api/forum/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Create Answer
+POST http://localhost:5000/api/forum/posts/1/answers
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+{
+  "content": "Preporacuvam da resavas zadaci od minati ispiti!"
+}
+
+### Like Post
+POST http://localhost:5000/api/forum/posts/1/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Create Listing
+POST http://localhost:5000/api/marketplace/listings
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+
+{
+  "title": "Matematika za inzenjeri",
+  "description": "Knigata e vo odlicna sostojba",
+  "subject": "Matematika",
+  "price": 350
+}
+
+### Get Listings
+GET http://localhost:5000/api/marketplace/listings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+
+### Get Listings by subject
+GET http://localhost:5000/api/marketplace/listings?subject=Matematika
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+
+### Update Status
+PUT http://localhost:5000/api/marketplace/listings/1/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+
+{
+  "status": "sold"
+}
+
+### Delete Listing
+DELETE http://localhost:5000/api/marketplace/listings/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
