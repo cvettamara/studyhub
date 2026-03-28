@@ -84,3 +84,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 ### Delete Listing
 DELETE http://localhost:5000/api/marketplace/listings/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Create Event
+POST http://localhost:5000/api/events
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+{
+  "title": "Grupno ucenje Matematika",
+  "description": "Ucime za ispit zaedno",
+  "subject": "Matematika",
+  "location": "Biblioteka",
+  "event_time": "2026-04-05T10:00:00"
+}
+
+### Get Events
+GET http://localhost:5000/api/events
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Join Event
+POST http://localhost:5000/api/events/1/join
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Leave Event
+DELETE http://localhost:5000/api/events/1/leave
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
