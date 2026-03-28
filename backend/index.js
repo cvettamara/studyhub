@@ -21,5 +21,8 @@ app.use('/api/marketplace', marketplaceRoutes);
 const eventsRoutes = require('./routes/events');
 app.use('/api/events', eventsRoutes);
 
+const mapRoutes = require('./routes/map');
+app.use('/api/map', mapRoutes);
+
 // server start
 app.listen(5000, () => console.log('Server running on port 5000'));

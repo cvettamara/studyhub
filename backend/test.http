@@ -109,3 +109,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 ### Leave Event
 DELETE http://localhost:5000/api/events/1/leave
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Create Location
+POST http://localhost:5000/api/map/locations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+{
+  "name": "Gradska Biblioteka",
+  "description": "Mirno mesto za ucenje",
+  "latitude": 41.9973,
+  "longitude": 21.4280,
+  "image_url": null
+}
+
+### Get Locations
+GET http://localhost:5000/api/map/locations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+### Rate Location
+POST http://localhost:5000/api/map/locations/1/rate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+
+{
+  "rating": 5
+}
+
+### Get Location Rating
+GET http://localhost:5000/api/map/locations/1/rating
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
