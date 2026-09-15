@@ -2,20 +2,45 @@ const pool = require('../db');
 
 const getLocations = async (req, res) => {
   try {
+    const user_id = req.user.id;
     const result = await pool.query(`
       SELECT 
         map_locations.*,
         users.name AS user_name,
         users.surname AS user_surname,
         ROUND(AVG(map_ratings.rating), 1) AS avg_rating,
-        COUNT(map_ratings.id) AS ratings_count
+        COUNT(map_ratings.id) AS ratings_count,
+        BOOL_OR(map_ratings.user_id = $1) AS rated_by_me
       FROM map_locations
       JOIN users ON map_locations.user_id = users.id
       LEFT JOIN map_ratings ON map_locations.id = map_ratings.location_id
       GROUP BY map_locations.id, users.name, users.surname
       ORDER BY map_locations.created_at DESC
-    `);
+    `, [user_id]);
     res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+const geocodeLocation = async (req, res) => {
+  const { q } = req.query;
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=1`,
+      { headers: { 'User-Agent': 'StudyHub-Thesis-App' } }
+    );
+    const data = await response.json();
+
+    if (data.length === 0) {
+      return res.status(404).json({ error: 'Location not found' });
+    }
+
+    res.json({
+      lat: parseFloat(data[0].lat),
+      lon: parseFloat(data[0].lon),
+      display_name: data[0].display_name
+    });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
@@ -63,4 +88,4 @@ const getLocationRating = async (req, res) => {
   }
 };
 
-module.exports = { getLocations, createLocation, rateLocation, getLocationRating };
+module.exports = { getLocations, geocodeLocation, createLocation, rateLocation, getLocationRating };

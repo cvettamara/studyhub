@@ -1,13 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}))
 app.use(express.json());
 
+// Сервирање на статички слики/фајлови од uploads папката
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // routes
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);

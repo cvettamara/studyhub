@@ -1,6 +1,7 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react"
+import { useRouter, usePathname } from 'next/navigation'
 
 interface User {
   id: number
@@ -52,6 +53,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       {children}
     </AuthContext.Provider>
   )
+}
+
+export function useRequireAuth() {
+  const { isLoggedIn } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isLoggedIn && typeof window !== 'undefined') {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        router.push('/login')
+      }
+    }
+  }, [isLoggedIn, router])
 }
 
 export function useAuth() {
