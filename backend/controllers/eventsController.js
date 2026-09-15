@@ -14,7 +14,20 @@ const getEvents = async (req, res) => {
       GROUP BY events.id, users.name, users.surname
       ORDER BY events.event_time ASC
     `);
-    res.json(result.rows);
+
+    const eventsWithParticipants = await Promise.all(
+      result.rows.map(async (event) => {
+        const participants = await pool.query(`
+          SELECT users.id, users.name, users.surname
+          FROM event_participants
+          JOIN users ON event_participants.user_id = users.id
+          WHERE event_participants.event_id = $1
+        `, [event.id]);
+        return { ...event, participants_list: participants.rows };
+      })
+    );
+
+    res.json(eventsWithParticipants);
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }

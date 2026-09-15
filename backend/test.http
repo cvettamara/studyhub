@@ -6,8 +6,8 @@ Content-Type: application/json
 {
   "name": "Tamara",
   "surname": "Cvetkovska",
-  "email": "tamara2@test.com",
-  "password": "123456"
+  "email": "msimonovski.contact@gmail.com",
+  "password": "12345678"
 }
 
 ### Login
@@ -16,14 +16,14 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "tamara2@test.com",
-  "password": "123456"
+  "email": "msimonovski.contact@gmail.com",
+  "password": "12345678"
 }
 
 ### Create Post
 POST http://localhost:5000/api/forum/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 {
   "title": "Kako da ucam matematika?",
@@ -31,51 +31,117 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
   "subject": "Matematika"
 }
 
+
+
+
+
+
+
+
+
+
+### GET Ai Preview
+POST http://localhost:5000/api/forum/posts/ai-preview
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
+
+{
+  "title": "Прашање за интеграли",
+  "content": "Како да решам определен интеграл?"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Get Posts
 GET http://localhost:5000/api/forum/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
+
+### Search Posts (Semantic Search)
+GET http://localhost:5000/api/forum/posts/search?q=matematika
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Create Answer
-POST http://localhost:5000/api/forum/posts/1/answers
+POST http://localhost:5000/api/forum/posts/9/answers
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 {
   "content": "Preporacuvam da resavas zadaci od minati ispiti!"
 }
 
 ### Like Post
-POST http://localhost:5000/api/forum/posts/1/like
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+POST http://localhost:5000/api/forum/posts/9/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
-### Create Listing
+
+### POST AI Suggested Answer for Post
+POST http://localhost:5000/api/forum/posts/9/ai-suggest
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
+
+### Create Listing со слика
 POST http://localhost:5000/api/marketplace/listings
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
+Content-Type: multipart/form-data; boundary=WebAppBoundary
 
+--WebAppBoundary
+Content-Disposition: form-data; name="title"
 
-{
-  "title": "Matematika za inzenjeri",
-  "description": "Knigata e vo odlicna sostojba",
-  "subject": "Matematika",
-  "price": 350
-}
+Matematika za inzenjeri
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
 
+Knigata e vo odlicna sostojba
+--WebAppBoundary
+Content-Disposition: form-data; name="subject"
+
+Matematika
+--WebAppBoundary
+Content-Disposition: form-data; name="price"
+
+350
+--WebAppBoundary
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< ./test.jpg
+--WebAppBoundary--
+
+### Search Listings
+GET http://localhost:5000/api/marketplace/listings/search?q=стар лаптоп
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 ### Get Listings
 GET http://localhost:5000/api/marketplace/listings
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Get Listings by subject
 GET http://localhost:5000/api/marketplace/listings?subject=Matematika
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Update Status
 PUT http://localhost:5000/api/marketplace/listings/1/status
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 {
   "status": "sold"
@@ -83,12 +149,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 ### Delete Listing
 DELETE http://localhost:5000/api/marketplace/listings/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Create Event
 POST http://localhost:5000/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 {
   "title": "Grupno ucenje Matematika",
@@ -100,20 +166,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 ### Get Events
 GET http://localhost:5000/api/events
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Join Event
 POST http://localhost:5000/api/events/1/join
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Leave Event
 DELETE http://localhost:5000/api/events/1/leave
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Create Location
 POST http://localhost:5000/api/map/locations
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 {
   "name": "Gradska Biblioteka",
@@ -125,12 +191,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 ### Get Locations
 GET http://localhost:5000/api/map/locations
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 ### Rate Location
 POST http://localhost:5000/api/map/locations/1/rate
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
 
 {
   "rating": 5
@@ -138,4 +204,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 ### Get Location Rating
 GET http://localhost:5000/api/map/locations/1/rating
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc0NzA2NjcxLCJleHAiOjE3NzUzMTE0NzF9.AX_8qMylVgdd6KGNXqYQBJTfEIzTPcTqzhk2J1w-Amg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
+
+### Geocode Location (Nominatim Proxy)
+GET http://localhost:5000/api/map/locations/geocode?q=Public+Room+Skopje
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQsImlhdCI6MTc4ODgwNTAzMSwiZXhwIjoxNzg5NDA5ODMxfQ.tyHdez6nVaLUJsRIa8aLIrvCjWtOxGs8P1E84SqXnMY
